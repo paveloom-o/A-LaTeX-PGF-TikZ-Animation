@@ -1,0 +1,8 @@
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DaemonMode = "d749ddd5-2b29-4920-8305-6ff5a704e36e"
+
+[compat]
+CSV = "=0.9.11"
+DaemonMode = "=0.1.10"
+julia = "1.6.4"
