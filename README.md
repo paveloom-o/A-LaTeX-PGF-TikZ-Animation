@@ -9,45 +9,45 @@ Check the template [`.tex`](template/template.tex) and [`.pdf`](template/templat
   * [GitLab](https://gitlab.com/paveloom-g/other/a-latex-pgf-tikz-animation)
   * [SourceHut](https://sr.ht/~paveloom/A-LaTeX-PGF-TikZ-Animation)
 
-2. Instantiate the Julia project:
+2. Typeset the PDF frames:
 
-    > **_NOTE:_**  You will need [Julia](https://julialang.org) installed.
-
-    ```bash
-    julia --project=. -e "using Pkg; Pkg.instantiate()"
-    ```
-
-3. Typeset the PDF frames:
-
-    > **_NOTE:_**  You will need [`tectonic`](https://tectonic-typesetting.github.io) installed.
+    > ***NOTE:***  You will need [`tectonic`](https://tectonic-typesetting.github.io) installed.
 
     ```bash
-    julia --project=. frames.jl
+    ./frames.bash --tectonic
     ```
 
     *or*
 
-    ```bash
-    ./julia.bash frames.jl
-    ```
-
-    The latter will start a Julia [daemon](https://github.com/dmolina/DaemonMode.jl) in the background. To kill it, run
+    > ***NOTE:***  You will need [`TexLive`](https://www.tug.org/texlive) installed.
 
     ```bash
-    ./julia.bash kill
+    ./frames.bash --xelatex
     ```
 
-4. Convert the PDFs to PNGs:
+    *or*
 
-    > **_NOTE:_**  You will need [`ImageMagick`](https://imagemagick.org) installed.
+    > ***NOTE:***  You will need [`TexLive`](https://www.tug.org/texlive) installed.
 
     ```bash
-    ./frames.bash
+    ./frames.bash --pdflatex
     ```
 
-4. Create a video and a GIF:
+    > ***HINT:*** The speed of typesetting can vary notably between these engines.
 
-    > **_NOTE:_**  You will need [`FFmpeg`](https://ffmpeg.org) installed.
+3. Convert the PDFs to PNGs:
+
+    > ***NOTE:***  You will need [`ImageMagick`](https://imagemagick.org) installed.
+
+    ```bash
+    ./convert.bash 540
+    ```
+
+    > ***HINT:*** The first argument is density.
+
+4. Create the video and the GIF:
+
+    > ***NOTE:***  You will need [`FFmpeg`](https://ffmpeg.org) installed.
 
     ```bash
     ./video.bash

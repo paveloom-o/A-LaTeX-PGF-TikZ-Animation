@@ -11,29 +11,38 @@ decorations.pathreplacing,decorations.text}
 \pgfplotsset{compat=1.5}
 \usepackage{xifthen}
 
-\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{mathtools}
 
-\usepackage{fontspec}
-\setmainfont[
-  Ligatures=TeX,
-  Extension=.otf,
-  BoldFont=cmunbx,
-  ItalicFont=cmunti,
-  BoldItalicFont=cmunbi,
-]{cmunrm}
-\usepackage{unicode-math}
+\ifxetex
+  \usepackage[english, russian]{babel}
+  \usepackage{fontspec}
+  \setmainfont[
+    Ligatures=TeX,
+    Extension=.otf,
+    BoldFont=cmunbx,
+    ItalicFont=cmunti,
+    BoldItalicFont=cmunbi,
+  ]{cmunrm}
+  % \usepackage{unicode-math}
+\else
+  \usepackage{cmap}
+  \usepackage[T2A,T1]{fontenc}
+  \usepackage[english, russian]{babel}
+  \usepackage[utf8]{inputenc}
+\fi
 
 \begin{document}
 
 \begin{tikzpicture}
   \pgfmathsetmacro{\r}{0.075}
   \begin{axis}[axis equal, axis x line=none, axis y line=none]
-    \addplot[mark=, color=orange] file {data.dat};
+    \addplot[mark=, color=orange] table[col sep=comma] {data.dat};
     \addplot[mark=*, color=red] coordinates {(0.154, -0.0932)};
     \addplot[mark=*, color=green] coordinates {(-0.1712, 0.2586)};
     \addplot[mark=*, color=blue] coordinates {(0.0467, 0.0096)};
   \end{axis}
-  \node at (3.5,5.5) {$m_1 = m_2 = m_3$};
+  \node at (3.5,5.5) {$ m_1 = m_2 = m_3 $};
 \end{tikzpicture}
 
 \end{document}

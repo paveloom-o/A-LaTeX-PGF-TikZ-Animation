@@ -1,2 +1,8 @@
+# Typesetting leftovers
+*.aux
+*.log
+*.out
+
+# Temp directories
 /temp
 /frames
