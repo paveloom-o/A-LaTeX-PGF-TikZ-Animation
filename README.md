@@ -7,7 +7,6 @@ Check the template [`.tex`](template/template.tex) and [`.pdf`](template/templat
   * [Codeberg](https://codeberg.org/paveloom-o/A-LaTeX-PGF-TikZ-Animation)
   * [GitHub](https://github.com/paveloom-o/A-LaTeX-PGF-TikZ-Animation)
   * [GitLab](https://gitlab.com/paveloom-g/other/a-latex-pgf-tikz-animation)
-  * [SourceHut](https://sr.ht/~paveloom/A-LaTeX-PGF-TikZ-Animation)
 
 2. Typeset the PDF frames:
 
