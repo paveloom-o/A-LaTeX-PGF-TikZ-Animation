@@ -21,7 +21,7 @@ fi
 
 echo
 for ((i = 0; i < N; i++)); do
-  echo -e "\e[1A\e[KConverting PDFs to PNGs... ($((i + 1))/${N})"
+  echo -e "\e[1A\e[K> Converting PDFs to PNGs... ($((i + 1))/${N})"
   PDF=${FILES[${i}]}
   PNG="${FRAMES_PNG}"/$(basename "${PDF}" .pdf).png
   convert -density "${1}" "${PDF}" -quality 100 "${PNG}" || break

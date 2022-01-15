@@ -35,14 +35,21 @@ decorations.pathreplacing,decorations.text}
 \begin{document}
 
 \begin{tikzpicture}
-  \pgfmathsetmacro{\r}{0.075}
+  \definecolor{safety_orange}{HTML}{FB6107}
+  \definecolor{blue_gray}{HTML}{6C91BF}
+  \definecolor{apple_green}{HTML}{7CB518}
+  \definecolor{fandango_pink}{HTML}{DE4D86}
+  \definecolor{honey_yellow}{HTML}{FBB02D}
+  \definecolor{tyrian_purple}{HTML}{64113F}
   \begin{axis}[axis equal, axis x line=none, axis y line=none]
-    \addplot[mark=, color=orange] table[col sep=comma] {data.dat};
-    \addplot[mark=*, color=red] coordinates {(0.154, -0.0932)};
-    \addplot[mark=*, color=green] coordinates {(-0.1712, 0.2586)};
-    \addplot[mark=*, color=blue] coordinates {(0.0467, 0.0096)};
+    \addplot[mark=, color=safety_orange] table[col sep=comma] {data.dat};
+    \addplot[mark=*, color=blue_gray] coordinates {(0.229753, 0.000000)};
+    \addplot[mark=*, color=apple_green] coordinates {(0.652919, 0.943822)};
+    \addplot[mark=*, color=fandango_pink] coordinates {(-0.767796, -0.199687)};
+    \addplot[mark=*, color=honey_yellow] coordinates {(-0.767796, 0.199687)};
+    \addplot[mark=*, color=tyrian_purple] coordinates {(0.652919, -0.943822)};
   \end{axis}
-  \node at (3.5,5.5) {$ m_1 = m_2 = m_3 $};
+  \node at (3.5,5.5) {$ m_1 = m_2 = m_3 = m_4 = m_5 $};
 \end{tikzpicture}
 
 \end{document}

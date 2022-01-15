@@ -10,7 +10,7 @@ TEMP_PDF="${ROOT}"/temp/temp.pdf
 FRAMES="${ROOT}"/frames/pdf
 
 # Set the time difference between the points
-DELTA=37
+DELTA=25
 
 # Expect the first argument to be a typesetting engine specification
 if [ "${1}" = "--tectonic" ]; then
@@ -44,8 +44,8 @@ N=${#_LINES[@]}
 
 # For each index
 echo
-for ((i = -1; i < N; i++)); do
-  echo -e "\e[1A\e[KTypesetting... ($((i + 2))/$((N + 1)))"
+for ((i = -1; i < N - 1; i++)); do
+  echo -e "\e[1A\e[K> Typesetting... ($((i + 2))/${N})"
   # If it's the special case of `-1`,
   if [ "${i}" == -1 ]; then
     # Copy the template
@@ -59,11 +59,13 @@ for ((i = -1; i < N; i++)); do
     # Hide the text
     sed -i 's|\\node|\\node\[opacity=0\]|g' "${TEMP_TEX}"
     # Hide the trajectory
-    sed -i 's|color=orange|color=orange, opacity=0|g' "${TEMP_TEX}"
+    sed -i 's|color=safety_orange|color=orange, opacity=0|g' "${TEMP_TEX}"
     # Replace the coordinates
-    sed -i "s|0.154, -0.0932|${_LINES[${i}]}|g" "${TEMP_TEX}"
-    sed -i "s|-0.1712, 0.2586|${_LINES[$(((i + DELTA) % N))]}|g" "${TEMP_TEX}"
-    sed -i "s|0.0467, 0.0096|${_LINES[$(((i + 2 * DELTA) % N))]}|g" "${TEMP_TEX}"
+    sed -i "46s|0.229753, 0.000000|${_LINES[${i}]}|" "${TEMP_TEX}"
+    sed -i "47s|0.652919, 0.943822|${_LINES[$(((i + DELTA) % (N - 1)))]}|" "${TEMP_TEX}"
+    sed -i "48s|-0.767796, -0.199687|${_LINES[$(((i + 2 * DELTA) % (N - 1)))]}|" "${TEMP_TEX}"
+    sed -i "49s|-0.767796, 0.199687|${_LINES[$(((i + 3 * DELTA) % (N - 1)))]}|" "${TEMP_TEX}"
+    sed -i "50s|0.652919, -0.943822|${_LINES[$(((i + 4 * DELTA) % (N - 1)))]}|" "${TEMP_TEX}"
   fi
   # Typeset the frame
   compile || break
